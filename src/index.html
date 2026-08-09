@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Brew Picker</title>
+  <meta name="description" content="Can't decide? Pick coffee or tea, customize your cup, and keep a brew log — fully offline." />
+
+  <!-- PWA -->
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <meta name="theme-color" content="#7a4a2b" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#241a14" media="(prefers-color-scheme: dark)" />
+
+  <!-- iOS "Add to Home Screen" -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Brew Picker" />
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+
+  <link rel="icon" href="./icons/icon-192.png" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app" id="app">
+    <header class="topbar">
+      <h1 class="brand">Brew&nbsp;Picker</h1>
+      <button class="ghost-btn" id="themeToggle" type="button" aria-label="Toggle theme">◐</button>
+    </header>
+
+    <!-- STEP 1: choose the drink -->
+    <section class="screen" id="screen-choose" aria-labelledby="chooseTitle">
+      <p class="lead" id="chooseTitle">What are you in the mood for?</p>
+      <div class="choices">
+        <button class="choice coffee" data-drink="coffee" type="button">
+          <span class="emoji" aria-hidden="true">☕</span>
+          <span class="choice-label">Coffee</span>
+        </button>
+        <button class="choice tea" data-drink="tea" type="button">
+          <span class="emoji" aria-hidden="true">🍵</span>
+          <span class="choice-label">Tea</span>
+        </button>
+      </div>
+      <button class="link-btn" id="decideForMe" type="button">🎲 Can't decide — pick for me</button>
+    </section>
+
+    <!-- STEP 2: customize -->
+    <section class="screen hidden" id="screen-customize" aria-labelledby="customizeTitle">
+      <p class="lead" id="customizeTitle">Customize your <span id="drinkName">brew</span></p>
+      <form id="customizeForm" class="options"></form>
+      <div class="row">
+        <button class="ghost-btn wide" id="backBtn" type="button">← Back</button>
+        <button class="primary-btn wide" id="brewBtn" type="button">Brew it ✨</button>
+      </div>
+    </section>
+
+    <!-- STEP 3: the brew card -->
+    <section class="screen hidden" id="screen-result" aria-labelledby="resultTitle">
+      <p class="lead" id="resultTitle">Your cup is ready</p>
+      <div class="brew-card" id="brewCard">
+        <div class="brew-emoji" id="brewEmoji" aria-hidden="true">☕</div>
+        <div class="brew-title" id="brewTitle">—</div>
+        <ul class="brew-meta" id="brewMeta"></ul>
+      </div>
+      <div class="row">
+        <button class="ghost-btn wide" id="againBtn" type="button">Start over</button>
+        <button class="primary-btn wide" id="saveBtn" type="button">Add to log</button>
+      </div>
+    </section>
+
+    <!-- Brew log -->
+    <section class="log" id="logSection" hidden>
+      <div class="log-head">
+        <h2>Your brew log</h2>
+        <button class="link-btn danger" id="clearLog" type="button">Clear</button>
+      </div>
+      <ul class="log-list" id="logList"></ul>
+    </section>
+
+    <footer class="footer">
+      <span id="netStatus" class="net">●</span>
+      <span class="muted">Works offline · Add to Home Screen</span>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

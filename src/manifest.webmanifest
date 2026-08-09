@@ -1,0 +1,16 @@
+{
+  "name": "Brew Picker",
+  "short_name": "Brew",
+  "description": "Pick coffee or tea, customize your cup, and keep a brew log — fully offline.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4ece3",
+  "theme_color": "#7a4a2b",
+  "icons": [
+    { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
